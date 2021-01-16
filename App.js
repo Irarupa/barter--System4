@@ -6,6 +6,7 @@ import { AppTabNavigator } from './components/AppTabNavigator'
 import Loginscreen from "./screens/LoginScreen";
 import ReadStory from "./screens/readStory"
 
+
 export default class App extends React.Component {
   render(){
     return(
@@ -13,9 +14,10 @@ export default class App extends React.Component {
     )
 }
 }
- const TabNavigator = createBottomTabNavigator({
-    login:{ screen :Loginscreen },
-  Read:{ screen :ReadStory}
+ 
+const AppNavigator=createSwitchNavigator({
+  login:{ screen :Loginscreen },
+  tabs:{screen:AppTabNavigator}
 })
 
-const AppContainer = createAppContainer(TabNavigator)
+const AppContainer = createAppContainer(AppNavigator)

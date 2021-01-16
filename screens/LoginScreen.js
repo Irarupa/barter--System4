@@ -19,13 +19,16 @@ export default class Loginscreen extends React.Component {
         confirmPassword:'',
     }
 }
+goTodashboard = () => {
+};
+
 
 userLogIn=(email,password)=>{
     firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
         return (
             alert("successfully logged in")
         )
-        this.props.navigation.navigate('readStory')
+        this.props.navigation.navigate('read')
     }).catch(function(error){
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -197,8 +200,9 @@ return (
              />
 
             <TouchableOpacity style={styles.button} onPress={()=>{
-                this.userLogIn(this.state.emailId,this.state.password)
-            }}>
+                this.userLogIn(this.state.emailId,this.state.password)||
+                this.goTodashboard();
+                 }} >
                <Text style={styles.buttonText}>LogIn</Text>
             </TouchableOpacity>
             
